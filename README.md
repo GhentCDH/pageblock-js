@@ -122,16 +122,13 @@ Add a Vue component and register it in `BlockRenderer.vue`:
 
 ```vue
 <script setup lang="ts">
-import type { EventMap } from '../../types/types'
+import type { EventBlockProps } from '../../types/types'
 import { useBlockEvents } from '../../lib/useBlockEvents'
 
 const props = defineProps<{
   message: string
   variant?: 'info' | 'warning' | 'error'
-  on?: EventMap
-  blockKey?: string
-  blockType?: string
-}>()
+} & EventBlockProps>()
 
 const { domHandlers } = useBlockEvents(
   () => ({ on: props.on, blockKey: props.blockKey, blockType: props.blockType ?? 'callout' }),
