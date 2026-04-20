@@ -12,11 +12,22 @@ export const HTML_TAGS = new Set<string>([
   'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
   'p', 'span', 'em', 'strong', 'a',
   'ul', 'ol', 'li', 'figure', 'figcaption',
-  'img', 'br', 'hr', 'button',
+  'img', 'br', 'hr', 'button', 'input', 'textarea', 'select', 'label', 'form',
 ])
 
 export type ActionDescriptor = string | { action: string; payload?: unknown }
 export type EventMap = Record<string, ActionDescriptor | ActionDescriptor[]>
+
+/** Base props injected by BlockRenderer into every custom block component. */
+export interface BlockProps {
+  blockKey?: string
+  blockType?: string
+}
+
+/** Extended props for components that handle DOM events. */
+export interface EventBlockProps extends BlockProps {
+  on?: EventMap
+}
 
 interface BaseBlock {
   _key?: string  // logical identifier for action dispatch; never rendered to DOM

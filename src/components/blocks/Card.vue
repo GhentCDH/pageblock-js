@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { EventMap } from '../../types/types'
+import type { EventBlockProps } from '../../types/types'
 import { useBlockEvents } from '../../lib/useBlockEvents'
 
 const props = defineProps<{
@@ -8,10 +8,7 @@ const props = defineProps<{
   image?: string
   imageAlt?: string
   link?: { href: string; label: string }
-  on?: EventMap
-  blockKey?: string
-  blockType?: string
-}>()
+} & EventBlockProps>()
 
 const { domHandlers } = useBlockEvents(
   () => ({ on: props.on, blockKey: props.blockKey, blockType: props.blockType ?? 'card' }),

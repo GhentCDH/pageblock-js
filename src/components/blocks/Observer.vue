@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineAsyncComponent, onMounted, onUnmounted, ref } from 'vue'
-import type { Block, EventMap } from '../../types/types'
+import type { Block, EventBlockProps, EventMap } from '../../types/types'
 import { useActionRegistry } from '../../lib/actionRegistry.ts'
 import { toArray } from '../../lib/utils'
 
@@ -9,9 +9,7 @@ const BlockRenderer = defineAsyncComponent(() => import('../BlockRenderer.vue'))
 const props = defineProps<{
   on: EventMap
   children: Block[]
-  blockKey?: string
-  blockType?: string
-}>()
+} & EventBlockProps>()
 // id and class fall through to the root <div>
 
 const actionRegistry = useActionRegistry()

@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import type { CardBlock, EventMap } from '../../types/types'
+import type { CardBlock, EventBlockProps } from '../../types/types'
 import { useBlockEvents } from '../../lib/useBlockEvents'
 import Card from './Card.vue'
 
 const props = defineProps<{
   children: CardBlock[]
-  on?: EventMap
-  blockKey?: string
-  blockType?: string
-}>()
+} & EventBlockProps>()
 
 const { domHandlers } = useBlockEvents(
   () => ({ on: props.on, blockKey: props.blockKey, blockType: props.blockType ?? 'card-grid' }),
