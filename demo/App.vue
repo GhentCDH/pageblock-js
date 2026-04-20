@@ -4,13 +4,15 @@ import { provideActionRegistry } from '../src/lib/actionRegistry.ts'
 import type { PageConfig } from '../src/types/types'
 
 provideActionRegistry({
-  greet:      ({ event, blockKey }) =>
-    alert(`Hello from "${blockKey}"! (clicked ${(event?.target as HTMLElement)?.tagName})`),
+  greet:      ({ args, blockKey }) =>
+    alert(`Hello from "${blockKey}"! (clicked ${((args[0] as Event)?.target as HTMLElement)?.tagName})`),
   logInview:  ({ eventName, blockKey }) =>
     console.log(`[${eventName}] key="${blockKey}"`),
   deleteItem: ({ blockKey, blockType, payload }) =>
     console.log('delete:', { blockKey, blockType, payload }),
-  log: (ActionData) => console.log(ActionData),
+  logChange:  ({ args, blockKey }) =>
+    console.log(`[change] key="${blockKey}" value=`, ((args[0] as Event)?.target as HTMLInputElement)?.value),
+  log: (ctx) => console.log(ctx),
 })
 
 const page: PageConfig = [
@@ -80,6 +82,17 @@ const page: PageConfig = [
   { _type: 'html',      content: '<b>Bold</b> and <em>italic</em> raw HTML.' },
   { _type: 'markdown',  content: '**Bold** and _italic_ via markdown.' },
   { _type: 'plaintext', content: 'Plain text node — no wrapper element.' },
+  {
+    _type: 'h3',
+    text: 'Input with change event',
+  },
+  {
+    _type: 'input',
+    _key: 'demo-input',
+    type: 'text',
+    placeholder: 'Type something and blur…',
+    on: { input: 'logChange' },
+  },
   { _type: 'h3', text: 'Cards' },
   {
     _type: 'card-grid',
