@@ -27,11 +27,11 @@ onMounted(() => {
   observer = new IntersectionObserver((entries) => {
     for (const entry of entries) {
       if (entry.isIntersecting && inview) {
-        const opts = { eventName: 'inview', event: null, blockType: props.blockType ?? 'observer', blockKey: props.blockKey }
+        const opts = { eventName: 'inview', event: null, args: [], blockType: props.blockType ?? 'observer', blockKey: props.blockKey }
         toArray(inview).forEach(d => actionRegistry.dispatch(d, opts))
       }
       if (!entry.isIntersecting && outview) {
-        const opts = { eventName: 'outview', event: null, blockType: props.blockType ?? 'observer', blockKey: props.blockKey }
+        const opts = { eventName: 'outview', event: null, args: [], blockType: props.blockType ?? 'observer', blockKey: props.blockKey }
         toArray(outview).forEach(d => actionRegistry.dispatch(d, opts))
       }
     }

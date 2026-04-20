@@ -17,8 +17,8 @@ export function useBlockEvents(
     return Object.fromEntries(
       Object.entries(on).map(([eventName, descriptors]) => [
         eventName,
-        (event: Event) => {
-          const opts = { eventName, event, blockType, blockKey }
+        (...args: unknown[]) => {
+          const opts = { eventName, event: args[0] ?? null, args, blockType, blockKey }
           toArray(descriptors).forEach(d => actionRegistry.dispatch(d, opts))
         },
       ])
