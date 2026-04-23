@@ -142,7 +142,7 @@ const { domHandlers } = useBlockEvents(
 </template>
 ```
 
-**2. Add the TypeScript interface** (`src/types/types.ts`):
+**2. Add the TypeScript interface**:
 
 ```ts
 export interface CalloutBlock extends BaseBlock {
