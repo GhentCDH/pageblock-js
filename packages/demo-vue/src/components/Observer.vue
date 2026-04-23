@@ -3,7 +3,7 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import {type BlockConfig, BlockRenderer, createActionDispatcher, type EventMap} from '@pageblocks/vue'
 import {
   createActionRegistry, createComponentRegistry,
-  type DefaultBlockProps, type defineBlockConfig,
+  type DefaultBlockProps, type BlockConfigOf,
   useComponentRegistry, useActionRegistry
 } from '@pageblocks/vue'
 import {toArray} from '@pageblocks/vue'
@@ -13,7 +13,7 @@ type CustomConfig = {
   on: Pick<EventMap, 'inview' | 'outview'> & EventMap
   children?: BlockConfig[]
 }
-export type ObserverConfig = defineBlockConfig<CustomConfig, 'observer'>
+export type ObserverConfig = BlockConfigOf<CustomConfig, 'observer'>
 type ObserverProps = DefaultBlockProps & CustomConfig
 
 const props = defineProps<ObserverProps>()

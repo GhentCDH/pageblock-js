@@ -2,7 +2,7 @@
 import { defineAsyncComponent } from 'vue'
 import {type BlockConfig} from '@pageblocks/core'
 import { useBlockEvents } from '../composables'
-import type {DefaultBlockProps, defineBlockConfig} from "../types/props";
+import type {DefaultBlockProps, BlockConfigOf} from "../types/props";
 
 const BlockRenderer = defineAsyncComponent(() => import('./BlockRenderer.vue'))
 
@@ -11,7 +11,7 @@ type CustomConfig = {
   children?: BlockConfig[]
 } & { [key: string]: string | number | boolean | null }
 
-export type HtmlNodeConfig = defineBlockConfig<CustomConfig, keyof HTMLElementTagNameMap>
+export type HtmlNodeConfig = BlockConfigOf<CustomConfig, keyof HTMLElementTagNameMap>
 export type HtmlNodeProps = CustomConfig & DefaultBlockProps
 
 const props = defineProps<HtmlNodeProps>()

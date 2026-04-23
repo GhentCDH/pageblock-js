@@ -1,10 +1,9 @@
 import type {BlockConfig, EventMap} from "@pageblocks/core";
 
 // allow to extend BlockConfig with custom properties and override the type of _type property
-export type defineBlockConfig<TConfig extends object, TType extends string = string> = BlockConfig & TConfig & { _type: TType }
+export type BlockConfigOf<TConfig extends object, TType extends string = string> = BlockConfig & TConfig & { _type: TType }
 
-// original version of the above util
-// export type defineBlockConfig<T> = T & BlockConfig;
+// previous name: defineBlockConfig — renamed to BlockConfigOf for clarity
 
 // export type defineBlockProps<T> = {
 //   blockType: string
