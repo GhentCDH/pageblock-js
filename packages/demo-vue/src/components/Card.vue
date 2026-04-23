@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type {DefaultBlockProps, defineBlockConfig} from '@pageblocks/vue'
+import type {DefaultBlockProps, BlockConfigOf} from '@pageblocks/vue'
 import { useBlockEvents } from '@pageblocks/vue'
 
 type CustomConfig = {
@@ -12,7 +12,7 @@ type CustomConfig = {
   class?: string
 }
 
-export type CardConfig = defineBlockConfig<CustomConfig, 'card'>
+export type CardConfig = BlockConfigOf<CustomConfig, 'card'>
 type CardProps = CustomConfig & DefaultBlockProps
 
 const props = defineProps<CardProps>()

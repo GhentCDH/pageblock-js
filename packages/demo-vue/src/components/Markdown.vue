@@ -2,11 +2,11 @@
 import { computed } from 'vue'
 import { marked } from 'marked'
 
-import type {DefaultBlockProps, defineBlockConfig} from "@pageblocks/vue";
+import type {DefaultBlockProps, BlockConfigOf} from "@pageblocks/vue";
 
 type CustomConfig = { content: string }
 
-export type MarkdownConfig = defineBlockConfig<CustomConfig, 'markdown'>
+export type MarkdownConfig = BlockConfigOf<CustomConfig, 'markdown'>
 export type MarkdownProps = CustomConfig & DefaultBlockProps
 
 const props = defineProps<MarkdownProps>()
