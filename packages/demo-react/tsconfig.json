@@ -5,24 +5,21 @@
     "moduleResolution": "bundler",
     "lib": ["ESNext", "DOM"],
     "jsx": "react-jsx",
+    "types": ["vite/client"],
     "strict": true,
     "skipLibCheck": true,
     "verbatimModuleSyntax": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noUncheckedIndexedAccess": true,
-    "composite": true,
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "declarationMap": true,
-    "rootDir": "./src",
-    "declarationDir": "./dist",
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
     "paths": {
+      "@pageblocks/react": ["../react/src/index.ts"],
       "@pageblocks/core": ["../core/src/index.ts"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "references": [
-    { "path": "../core" }
+    { "path": "../react" }
   ]
 }
