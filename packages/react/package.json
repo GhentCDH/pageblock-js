@@ -1,0 +1,29 @@
+{
+  "name": "@pageblocks/react",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "build": "echo 'react: not implemented yet'",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@pageblocks/core": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "~6.0.2"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "react": { "optional": true }
+  }
+}
