@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from 'vue'
 import {type BlockConfig} from '@pageblocks/core'
 import { useBlockEvents } from '../composables'
 import type {DefaultBlockProps, BlockConfigOf} from "../types/props";
-
-const BlockRenderer = defineAsyncComponent(() => import('./BlockRenderer.vue'))
+import BlockRenderer from './BlockRenderer.vue'
 
 type CustomConfig = {
   text?: string
