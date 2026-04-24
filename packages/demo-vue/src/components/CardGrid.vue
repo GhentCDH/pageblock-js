@@ -5,7 +5,6 @@ import { useBlockEvents } from '@pageblocks/vue'
 import Card, { type CardConfig } from './Card.vue'
 
 export type CustomConfig = {
-  _type: 'card-grid'
   children: CardConfig[]
 }
 
